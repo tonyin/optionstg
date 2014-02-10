@@ -12,14 +12,13 @@ from model import Section
 @app.route('/lesson/<int:lesson_id>/', methods=['GET'])
 @auth.login_required
 def lesson(lesson_id):
-    if lesson_id == 0:
-        section_dbs = Section.query(Section.lesson == 0)
-        title = "Lesson 0"
-    else:
-        title = "Lesson Something"
+    user_db = auth.current_user_db()
+    section_dbs = Section.query(Section.lesson == lesson_id)
     return render_template(
         'lesson.html',
         html_class='lesson',
-        title=title,
-        sections=section_dbs
-        )
+        sections=section_dbs,
+        title='Lesson ' + str(lesson_id),
+        lesson_id=lesson_id,
+        progress=user_db.progress,
+    )

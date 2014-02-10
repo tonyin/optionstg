@@ -5,28 +5,23 @@
   <div class="page-header">
     <h1>{{title}}</h1>
   </div>
-  # if section_db
-    <p>{{section_db.content}}</p>
-  # endif
-  <div class="row">
-    <div class="col-sm-8 col-md-8 col-lg-8">
-      <form method="POST" action=".">
-        <fieldset>
-          {{form.csrf_token}}
-          
-          {{forms.text_field(form.title, autofocus=True)}}
-          {{forms.textarea_field(form.content)}}
-          {{forms.number_field(form.lesson)}}
-          
-          <button type="submit" class="btn btn-primary">
-            # if section_db
-              Update
-            # else
-              Create
-            # endif
-          </button>
-        </fieldset>
-      </form>
+  <form method="POST" action="." novalidate>
+    <div class="row">
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        {{form.csrf_token}}
+        
+        {{forms.text_field(form.title, autofocus=True)}}
+        {{forms.textarea_field(form.content)}}
+        {{forms.number_field(form.lesson)}}
+        
+        <button type="submit" class="btn btn-primary">
+          # if section_db
+            Update
+          # else
+            Create
+          # endif
+        </button>
+      </div>
     </div>
-  </div>
+  </form>
 # endblock

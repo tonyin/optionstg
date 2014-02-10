@@ -73,7 +73,7 @@ def section_delete(section_id):
 @auth.admin_required
 def section_update(section_id):
     section_db = Section.get_by_id(section_id)
-    form = SectionForm()
+    form = SectionForm(obj=section_db)
     if form.validate_on_submit():
         form.populate_obj(section_db)
         try:
@@ -86,7 +86,7 @@ def section_update(section_id):
     return render_template(
         'section_update.html',
         html_class='section-update',
-        title=section_db.title,
+        title='Edit Section',
         form=form,
         section_db=section_db
     )

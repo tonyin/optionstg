@@ -4,13 +4,21 @@
       <a href="{{url_for('lesson', lesson_id=0)}}">Training</a>
     </li>
     <li>
-      <a href="#"><i class="fa fa-arrow-left"></i> Prev</a>
+      # if lesson_id > 0
+        <a href="{{url_for('lesson', lesson_id=lesson_id-1)}}"><i class="fa fa-arrow-left"></i> Prev</a>
+      # else
+        <p class="navbar-text"><i class="fa fa-arrow-left"></i> Prev</p>
+      # endif
     </li>
     <li class="active">
-      <p class="navbar-text">Lesson</p>
+      <p class="navbar-text">Lesson {{lesson_id}}</p>
     </li>
     <li>
-      <a href="#">Next <i class="fa fa-arrow-right"></i></a>
+      # if (lesson_id < 5) and (lesson_id < progress)
+        <a href="{{url_for('lesson', lesson_id=lesson_id+1)}}">Next <i class="fa fa-arrow-right"></i></a>
+      # else
+        <p class="navbar-text">Next <i class="fa fa-arrow-right"></i></p>
+      # endif
     </li>
   # else
     <li>
