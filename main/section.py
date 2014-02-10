@@ -30,7 +30,7 @@ def section_view():
     return render_template(
         'section_view.html',
         html_class='section-view',
-        title='View Sections',
+        title='Sections',
         sections=section_dbs
         )
 
