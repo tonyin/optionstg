@@ -72,6 +72,7 @@
       <thead>
         <tr class="text-nowrap">
           <th class="col-xs-4"><input id="select-all" type="checkbox"> {{utils.order_by_link('name', 'Name')}}</th>
+          <th class="col-xs-2">{{utils.order_by_link('progress', 'Progress')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('username', 'Username')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('email', 'Email')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('created', 'Created')}}</th>
@@ -98,6 +99,7 @@
                 <i class="fa fa-ban" title="Inactive"></i>
               # endif
             </td>
+            <td>{{user_db.progress}}</td>
             <td>{{user_db.username}}</td>
             <td>{{user_db.email}}</td>
             <td>

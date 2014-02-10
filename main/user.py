@@ -59,6 +59,9 @@ class UserUpdateForm(wtf.Form):
     )
   admin = wtf.BooleanField('Admin')
   active = wtf.BooleanField('Active')
+  
+  # Custom
+  progress = wtf.IntegerField('Progress', [wtf.validators.NumberRange(min=0, max=5)])
 
 
 @app.route('/user/<int:user_id>/update/', methods=['GET', 'POST'])

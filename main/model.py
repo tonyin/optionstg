@@ -58,7 +58,7 @@ class User(Base, modelx.UserX):
   email = ndb.StringProperty(indexed=True, default='')
   auth_ids = ndb.StringProperty(indexed=True, repeated=True)
 
-  active = ndb.BooleanProperty(default=True)
+  active = ndb.BooleanProperty(default=False)
   admin = ndb.BooleanProperty(default=False)
   
   # Custom

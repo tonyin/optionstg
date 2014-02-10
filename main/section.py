@@ -9,7 +9,7 @@ import model
 # ########
 # Globals
 # ########
-LESSONS = range(5)
+
 
 # ######
 # Forms
@@ -17,7 +17,7 @@ LESSONS = range(5)
 class SectionForm(wtf.Form):
     title = wtf.StringField('Title', [wtf.validators.required()])
     content = wtf.TextAreaField('Content', [wtf.validators.optional()])
-    lesson = wtf.IntegerField('Lesson', [wtf.validators.AnyOf(LESSONS)])
+    lesson = wtf.IntegerField('Lesson', [wtf.validators.NumberRange(min=0, max=5)])
 
 # ########
 # Routing
