@@ -1,0 +1,7 @@
+virtual env --distribute
+download google app engine sdk for python https://developers.google.com/appengine/downloads
+download node.js http://nodejs.org/
+clone into https://github.com/tonyin/optionstg.git
+
+To run: python run.py -s
+To deploy: 0) python run.py -m 1)git push; 2) deploy on gae launcher

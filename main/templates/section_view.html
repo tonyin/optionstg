@@ -1,0 +1,21 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      # for section in sections
+      <h3>{{section.title}}</h3>
+      <p>{{section.content}}</p>
+      <form method="post" action="{{url_for('section_delete', section_id=section.key.id())}}">
+        <button class="btn btn-primary">Delete</button>
+      </form>
+      <form method="post" action="{{url_for('section_update', section_id=section.key.id())}}">
+        <button class="btn btn-primary">Edit</button>
+      </form>
+      <br />
+      # endfor
+    </div>
+  </div>
+# endblock

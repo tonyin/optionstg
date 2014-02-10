@@ -332,7 +332,7 @@ if args.start:
   clear = 'yes' if args.flush else 'no'
   port = int(args.port)
   run_command = '''
-      dev_appserver.py %s
+      python ../../../"Program Files (X86)"/Google/google_appengine/dev_appserver.py %s
       --host %s
       --port %s
       --admin_port %s

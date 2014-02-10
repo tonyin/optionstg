@@ -34,6 +34,7 @@ if config.DEVELOPMENT:
 def welcome():
   return flask.render_template('welcome.html', html_class='welcome')
 
+import section
 
 ###############################################################################
 # Sitemap stuff

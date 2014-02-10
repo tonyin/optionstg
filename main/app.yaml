@@ -1,5 +1,5 @@
-application: gae-init
-version: 1
+application: options-tg
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -28,6 +28,10 @@ handlers:
 
 - url: /.*
   script: main.app
+
+- url: /static/style2.css
+  static_files: static/style2.css
+  upload: static/style2.css
 
 skip_files:
 - ^(.*/)?app\.yaml
