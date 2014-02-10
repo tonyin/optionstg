@@ -23,10 +23,6 @@ class SectionForm(wtf.Form):
 # ########
 # Routing
 # ########
-@app.route('/lesson/')
-@auth.login_required
-def lesson():
-    return render_template('lesson.html', html_class='lesson')
 
 @app.route('/section/view/')
 @auth.admin_required
