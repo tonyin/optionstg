@@ -1,0 +1,15 @@
+# if current_user.id > 0
+  <li class="{{'active' if html_class == 'lesson'}}">
+    <a href="{{url_for('lesson')}}">
+    # if html_class == 'welcome'
+      Start Your Training
+    # else
+      Training
+    # endif
+    </a>
+  </li>
+# else
+  <li class="disabled">
+    <a href="{{url_for('lesson')}}"> Start Your Training</a>
+  </li>
+# endif

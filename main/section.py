@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from main import app, welcome
+from main import app
 from flask.ext import wtf
 from flask import render_template, flash, redirect, url_for
 import auth
 import model
-import util
 
 # ########
 # Globals

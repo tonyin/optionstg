@@ -35,6 +35,7 @@ def welcome():
   return flask.render_template('welcome.html', html_class='welcome')
 
 import section
+import lesson
 
 ###############################################################################
 # Sitemap stuff

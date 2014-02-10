@@ -7,7 +7,6 @@ from google.appengine.ext import ndb
 import modelx
 import util
 
-
 # The timestamp of the currently deployed version
 TIMESTAMP = long(os.environ.get('CURRENT_VERSION_ID').split('.')[1]) >> 28
 
@@ -61,6 +60,9 @@ class User(Base, modelx.UserX):
 
   active = ndb.BooleanProperty(default=True)
   admin = ndb.BooleanProperty(default=False)
+  
+  # Custom
+  progress = ndb.IntegerProperty(default=0)
 
   _PROPERTIES = Base._PROPERTIES.union({
       'active',
