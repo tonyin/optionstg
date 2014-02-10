@@ -4,7 +4,7 @@ from main import app
 from flask.ext import wtf
 from flask import render_template, flash, redirect, url_for
 import auth
-import model
+from model import Section
 
 # ########
 # Globals
@@ -26,7 +26,7 @@ class SectionForm(wtf.Form):
 @app.route('/section/view/')
 @auth.admin_required
 def section_view():
-    section_dbs = model.Section.query()
+    section_dbs = Section.query()
     return render_template(
         'section_view.html',
         html_class='section-view',
@@ -39,7 +39,7 @@ def section_view():
 def section_create():
     form = SectionForm()
     if form.validate_on_submit():
-        section_db = model.Section(
+        section_db = Section(
             title = form.title.data,
             content = form.content.data,
             lesson = form.lesson.data,
@@ -60,7 +60,7 @@ def section_create():
 @app.route('/section/<int:section_id>/delete/', methods=['GET', 'POST'])
 @auth.admin_required
 def section_delete(section_id):
-    section_db = model.Section.get_by_id(section_id)
+    section_db = Section.get_by_id(section_id)
     try:
         section_db.key.delete()
         flash(u'Section id %s successfully deleted.' % section_id, 'success')
@@ -72,7 +72,7 @@ def section_delete(section_id):
 @app.route('/section/<int:section_id>/update/', methods=['GET', 'POST'])
 @auth.admin_required
 def section_update(section_id):
-    section_db = model.Section.get_by_id(section_id)
+    section_db = Section.get_by_id(section_id)
     form = SectionForm()
     if form.validate_on_submit():
         form.populate_obj(section_db)

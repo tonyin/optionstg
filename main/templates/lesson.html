@@ -1,15 +1,19 @@
 # extends 'base.html'
 
-# block content
-  <div class="page-header">
-    <h1>{{title}}</h1>
-  </div>
-    <div class="col-sm-8 col-md-8 col-lg-8">
-      # for section in sections
-      <h3>{{section.title}}</h3>
-      <p>{{section.content}}</p>
-      <br />
-      # endfor
+# block header
+  <div class="jumbotron">
+    <div class="container">
+      <h1>{{title}}</h1>
     </div>
   </div>
+# endblock
+# block content
+  # for section in sections
+    <div class="page-header">
+      <h1>{{section.title}}</h1>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <p>{{section.content}}</p>
+    </div>
+  # endfor
 # endblock
