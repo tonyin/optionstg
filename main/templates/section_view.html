@@ -10,8 +10,7 @@
       <p>{{section.content}}</p>
       <form method="post" action="{{url_for('section_delete', section_id=section.key.id())}}">
         <button class="btn btn-primary">Delete</button>
-      </form>
-      <form method="post" action="{{url_for('section_update', section_id=section.key.id())}}">
+      </form><form method="post" action="{{url_for('section_update', section_id=section.key.id())}}">
         <button class="btn btn-primary">Edit</button>
       </form>
       <br />

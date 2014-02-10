@@ -43,6 +43,7 @@ def section_create():
         section_db = model.Section(
             title = form.title.data,
             content = form.content.data,
+            lesson = form.lesson.data,
         )
         try:
             section_db.put()
