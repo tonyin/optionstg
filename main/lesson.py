@@ -13,6 +13,8 @@ from model import Section
 @auth.login_required
 def lesson(lesson_id):
     user_db = auth.current_user_db()
+    if user_db.progress < lesson_id:
+        return redirect(url_for('welcome'))
     section_dbs = Section.query(Section.lesson == lesson_id)
     return render_template(
         'lesson.html',
