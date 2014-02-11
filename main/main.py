@@ -30,9 +30,23 @@ if config.DEVELOPMENT:
 ###############################################################################
 # Main page
 ###############################################################################
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def welcome():
-  return flask.render_template('welcome.html', html_class='welcome')
+  form = FeedbackForm()
+  if form.validate_on_submit():
+    mail.send_mail(
+        sender=config.CONFIG_DB.feedback_email,
+        to=config.CONFIG_DB.feedback_email,
+        subject='[%s] %s' % (
+            config.CONFIG_DB.brand_name,
+            form.subject.data,
+          ),
+        reply_to=form.email.data,
+        body='%s' % form.email.data
+      )
+    flask.flash('Thank you for signing up. We will notify you shortly with next steps.', category='success')
+    return flask.redirect(flask.url_for('welcome'))
+  return flask.render_template('welcome.html', html_class='welcome', form=form)
 
 import section
 import lesson
@@ -93,14 +107,17 @@ def profile():
 # Feedback
 ###############################################################################
 class FeedbackForm(wtf.Form):
-  subject = wtf.StringField('Subject',
-      [wtf.validators.required()], filters=[util.strip_filter],
+  subject = wtf.StringField(#'Subject',
+      #[wtf.validators.required()], 
+      filters=[util.strip_filter],
     )
   message = wtf.TextAreaField('Message',
-      [wtf.validators.required()], filters=[util.strip_filter],
+      #[wtf.validators.required()], 
+      filters=[util.strip_filter],
     )
-  email = wtf.StringField('Email (optional)',
-      [wtf.validators.optional(), wtf.validators.email()],
+  email = wtf.StringField(#'Email (optional)',
+      '',
+      [wtf.validators.required(), wtf.validators.email()],
       filters=[util.email_filter],
     )
 

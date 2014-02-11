@@ -1,4 +1,5 @@
 # extends 'base.html'
+# import 'macro/forms.html' as forms
 
 # block header
   <div class="jumbotron">
@@ -13,7 +14,7 @@
   <div class="row">
     <div class="col-sm-6 col-md-4 col-lg-3">
       <h2>Program</h2>
-      <p>Welcome to Options Training Ground (OTG). We run an intensive 5-week course in options trading, which includes option theory, interactive learning, and market simulations. Our program is accessible to people from all tracks of life, whether you are a graduating student looking for a derivatives trading role or a non-finance professional opening your first brokerage account.</p>
+      <p>Welcome to Options Training Ground (OTG). We run an intensive 5-week course in options trading, which includes option theory, interactive learning, and market simulations. Our program is accessible to people from all tracks of life, from graduating students looking for a job to non-finance professionals getting into investing.</p>
     </div>
     <div class="col-sm-6 col-md-4 col-lg-3">
       <h2>Network</h2>
@@ -22,6 +23,22 @@
     <div class="col-sm-6 col-md-4 col-lg-3">
       <h2>Contact</h2>
       <p>We believe in live, exclusive support.<br />Email us at tonyyyin [at] gmail for any questions.<br /><br />We are headquartered in Chicago, IL.</p>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <form class="form-inline" role="form" method="POST" action"." novalidate>
+        <h4>Interested? Enter your email to get started: 
+        
+        {{form.csrf_token}}
+        {{forms.email_field(form.email, autofocus=True)}}
+        
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+        </h4>
+      </form>
     </div>
   </div>
 # endblock
