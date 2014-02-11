@@ -22,16 +22,16 @@ handlers:
   static_files: static/robots.txt
   upload: static/robots.txt
 
+- url: /static/style2.css
+  static_files: static/style2.css
+  upload: static/style2.css
+
 - url: /p/
   static_dir: static/
   expiration: 1000d
 
 - url: /.*
   script: main.app
-
-- url: /static/style2.css
-  static_files: static/style2.css
-  upload: static/style2.css
 
 skip_files:
 - ^(.*/)?app\.yaml
