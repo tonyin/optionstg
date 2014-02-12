@@ -9,6 +9,7 @@ from model import Section
 # Routing
 # ########
 
+@app.route('/lesson/', defaults={'lesson_id': 0})
 @app.route('/lesson/<int:lesson_id>/', methods=['GET'])
 @auth.login_required
 def lesson_redirect(lesson_id):

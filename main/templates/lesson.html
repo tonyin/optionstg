@@ -12,12 +12,10 @@
   <ul class="nav nav-tabs">
   # for section in sections
     # if section.number == section_id
-      <li class="active">
+      <li class="active"><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a></li>
     # else
-      <li>
+      <li><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a></li>
     # endif
-        <a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a>
-      </li>
   # endfor
   </ul>
   
@@ -27,7 +25,7 @@
         <h1>{{section.title}}</h1>
       </div>
       <div class="col-sm-12 col-md-6 col-lg-6">
-        <p>{{section.content if section.number == section_id}}</p>
+        <p>{{section.content}}</p>
       </div>
     # endif
   # endfor
