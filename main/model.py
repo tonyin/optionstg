@@ -82,3 +82,4 @@ class Section(Base):
     title = ndb.StringProperty(required=True)
     content = ndb.TextProperty()
     lesson = ndb.IntegerProperty()
+    number = ndb.IntegerProperty()

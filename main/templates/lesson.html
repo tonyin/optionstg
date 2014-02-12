@@ -4,16 +4,32 @@
   <div class="jumbotron">
     <div class="container">
       <h1>{{title}}</h1>
+      <p>Fundamentals</p>
     </div>
   </div>
 # endblock
 # block content
+  <ul class="nav nav-tabs">
   # for section in sections
-    <div class="page-header">
-      <h1>{{section.title}}</h1>
-    </div>
-    <div class="col-sm-8 col-md-8 col-lg-8">
-      <p>{{section.content}}</p>
-    </div>
+    # if section.number == section_id
+      <li class="active">
+    # else
+      <li>
+    # endif
+        <a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a>
+      </li>
   # endfor
+  </ul>
+  
+  # for section in sections
+    # if section.number == section_id
+      <div class="page-header">
+        <h1>{{section.title}}</h1>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <p>{{section.content if section.number == section_id}}</p>
+      </div>
+    # endif
+  # endfor
+
 # endblock
