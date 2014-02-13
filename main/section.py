@@ -27,13 +27,13 @@ class SectionForm(wtf.Form):
 @app.route('/section/view/')
 @auth.admin_required
 def section_view():
-    section_dbs = Section.query()
+    section_dbs = Section.query().order(Section.lesson, Section.number)
     return render_template(
         'section_view.html',
         html_class='section-view',
         title='Sections',
-        sections=section_dbs
-        )
+        sections=section_dbs,
+    )
 
 @app.route('/section/create/', methods=['GET', 'POST'])
 @auth.admin_required
