@@ -77,9 +77,15 @@ class User(Base, modelx.UserX):
 # #############
 # Custom models
 # #############
+TAGS = ['DEF', 'COR', 'EXP', 'MED']
+
+class Piece(Base):
+    content = ndb.TextProperty()
+    tag = ndb.StringProperty(required=True, choices=TAGS)
+    number = ndb.IntegerProperty()
 
 class Section(Base):
     title = ndb.StringProperty(required=True)
-    content = ndb.TextProperty()
     lesson = ndb.IntegerProperty()
     number = ndb.IntegerProperty()
+    pieces = ndb.StructuredProperty(Piece, repeated=True)

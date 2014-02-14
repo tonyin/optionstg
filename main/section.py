@@ -16,7 +16,6 @@ from model import Section
 # ######
 class SectionForm(wtf.Form):
     title = wtf.StringField('Title', [wtf.validators.required()])
-    content = wtf.TextAreaField('Content', [wtf.validators.optional()])
     lesson = wtf.IntegerField('Lesson', [wtf.validators.NumberRange(min=0, max=5)])
     number = wtf.IntegerField('Number', [wtf.validators.NumberRange(min=1, max=9)])
 
@@ -42,7 +41,6 @@ def section_create():
     if form.validate_on_submit():
         section_db = Section(
             title = form.title.data,
-            content = form.content.data,
             lesson = form.lesson.data,
             number = form.number.data,
         )

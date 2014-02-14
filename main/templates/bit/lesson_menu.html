@@ -1,7 +1,7 @@
 # if current_user.id > 0
   # if html_class == 'lesson'
     <li class="active">
-      <a href="{{url_for('lesson_redirect', lesson_id=progress)}}"><i class="fa fa-leaf"></i> Training</a>
+      <a href="{{url_for('lesson', lesson_id=progress)}}"><i class="fa fa-leaf"></i> Training</a>
     </li>
     <li>
       # if lesson_id > 0
@@ -22,7 +22,7 @@
     </li>
   # else
     <li>
-      <a href="{{url_for('lesson_redirect', lesson_id=0)}}"><i class="fa fa-leaf"></i> Start Your Training</a>
+      <a href="{{url_for('lesson', lesson_id=0)}}"><i class="fa fa-leaf"></i> Start Your Training</a>
     </li>
   # endif
 # else
