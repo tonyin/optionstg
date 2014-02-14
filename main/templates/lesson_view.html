@@ -1,0 +1,23 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="col-sm-8 col-md-8 col-lg-8">
+    # for lesson in lessons
+      <table><tr>
+      <td><h3>{{lesson.title}}</h3></td>
+      <td style="padding:10px"><form method="post" action="{{url_for('lesson_delete', lesson_id=lesson.key.id())}}">
+        <button class="btn btn-default">Delete</button>
+      </form></td>
+      <td style="padding:10px"><form method="post" action="{{url_for('lesson_update', lesson_id=lesson.key.id())}}">
+        <button class="btn btn-default">Edit</button>
+      </form></td></tr></table>
+      <p>Number: {{lesson.number}}</p>
+      <p>Sections: {{lesson.sections}}</p>
+      <p>Pieces: {{lesson.pieces}}</p>
+      <br />
+    # endfor
+  </div>
+# endblock

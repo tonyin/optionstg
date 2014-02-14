@@ -80,12 +80,20 @@ class User(Base, modelx.UserX):
 TAGS = ['DEF', 'COR', 'EXP', 'MED']
 
 class Piece(Base):
-    content = ndb.TextProperty()
+    lesson = ndb.IntegerProperty()
+    section = ndb.IntegerProperty()
     tag = ndb.StringProperty(required=True, choices=TAGS)
     number = ndb.IntegerProperty()
+    content = ndb.TextProperty()
 
 class Section(Base):
-    title = ndb.StringProperty(required=True)
     lesson = ndb.IntegerProperty()
+    title = ndb.StringProperty(required=True)
     number = ndb.IntegerProperty()
-    pieces = ndb.StructuredProperty(Piece, repeated=True)
+    pieces = ndb.IntegerProperty()
+
+class Lesson(Base):
+    title = ndb.StringProperty(required=True)
+    number = ndb.IntegerProperty()
+    sections = ndb.IntegerProperty()
+    pieces = ndb.IntegerProperty()

@@ -11,8 +11,12 @@
         <li class="divider"></li>
         <li><a href="{{url_for('admin_config_update')}}"><i class="fa fa-fw fa-cog"></i> Admin Config</a></li>
         <li class="divider"></li>
+        <li><a href="{{url_for('lesson_view')}}"><i class="fa fa-fw fa-th-list"></i> Lessons</a></li>
+        <li><a href="{{url_for('lesson_create')}}"><i class="fa fa-fw fa-th-list"></i> Lessons: Create</a></li>
         <li><a href="{{url_for('section_view')}}"><i class="fa fa-fw fa-th-list"></i> Sections</a></li>
         <li><a href="{{url_for('section_create')}}"><i class="fa fa-fw fa-th-list"></i> Sections: Create</a></li>
+        <li><a href="{{url_for('piece_view')}}"><i class="fa fa-fw fa-th-list"></i> Pieces</a></li>
+        <li><a href="{{url_for('piece_create')}}"><i class="fa fa-fw fa-th-list"></i> Pieces: Create</a></li>
         <li class="divider"></li>
         <li><a href="{{url_for('user_list', order='-modified', active=True)}}"><i class="fa fa-fw fa-group"></i> Manage Users</a></li>
         <li class="divider"></li>

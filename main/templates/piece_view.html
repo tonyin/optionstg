@@ -1,0 +1,24 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="col-sm-8 col-md-8 col-lg-8">
+    # for piece in pieces
+      <table><tr>
+      <td><h3>{{piece.tag}}</h3></td>
+      <td style="padding:10px"><form method="post" action="{{url_for('piece_delete', piece_id=piece.key.id())}}">
+        <button class="btn btn-default">Delete</button>
+      </form></td>
+      <td style="padding:10px"><form method="post" action="{{url_for('piece_update', piece_id=piece.key.id())}}">
+        <button class="btn btn-default">Edit</button>
+      </form></td></tr></table>
+      <p>Lesson: {{piece.lesson}}</p>
+      <p>Section: {{piece.section}}</p>
+      <p>Number: {{piece.number}}</p>
+      <p>{{piece.number}}</p>
+      <br />
+    # endfor
+  </div>
+# endblock

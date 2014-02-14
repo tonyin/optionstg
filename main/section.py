@@ -15,13 +15,13 @@ from model import Section
 # Forms
 # ######
 class SectionForm(wtf.Form):
-    title = wtf.StringField('Title', [wtf.validators.required()])
     lesson = wtf.IntegerField('Lesson', [wtf.validators.NumberRange(min=0, max=5)])
+    title = wtf.StringField('Title', [wtf.validators.required()])
     number = wtf.IntegerField('Number', [wtf.validators.NumberRange(min=1, max=9)])
 
-# ########
-# Routing
-# ########
+# ################
+# Routing - Admin
+# ################
 
 @app.route('/section/view/')
 @auth.admin_required

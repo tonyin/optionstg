@@ -48,8 +48,9 @@ def welcome():
     return flask.redirect(flask.url_for('welcome'))
   return flask.render_template('welcome.html', html_class='welcome', form=form)
 
-import section
 import lesson
+import section
+import piece
 
 ###############################################################################
 # Sitemap stuff

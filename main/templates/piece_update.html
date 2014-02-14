@@ -1,0 +1,29 @@
+# extends 'base.html'
+# import 'macro/forms.html' as forms
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <form method="POST" action="." novalidate>
+    <div class="row">
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        {{form.csrf_token}}
+        
+        {{forms.text_field(form.tag, autofocus=True)}}
+        {{forms.number_field(form.lesson)}}
+        {{forms.number_field(form.section)}}
+        {{forms.number_field(form.number)}}
+        {{forms.text_field(form.content)}}
+        
+        <button type="submit" class="btn btn-primary">
+          # if piece_db
+            Update
+          # else
+            Create
+          # endif
+        </button>
+      </div>
+    </div>
+  </form>
+# endblock
