@@ -1,0 +1,23 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Date', 'Price'],
+      ['Today', 4.00],
+      ['One Month', 4.15],
+      ['Two Months', 4.25],
+      ['Three Months', 4.50],
+    ]);
+    var options = {
+      hAxis: {title: 'Date', viewWindowMode: 'pretty', textPosition: 'in'},
+      vAxis: {title: 'Price', viewWindowMode: 'pretty', textPosition: 'in'},
+      legend: {position: 'none'},
+      chartArea: {width:'90%', height:'85%'},
+      pointSize: 4,
+    };
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>

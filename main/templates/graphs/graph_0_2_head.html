@@ -1,0 +1,21 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Owner', 'Shares'],
+      ['CEO', 2100],
+      ['Employees', 500],
+      ['Venture Capital', 1500],
+      ['Angel Investors', 500],
+      ['You', 400],
+    ]);
+    var options = {
+      legend: {position: 'none'},
+      chartArea: {width:'100%', height:'100%'},
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>

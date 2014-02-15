@@ -1,0 +1,20 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['orgchart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Security', 'Underlying'],
+      ['Stocks', null],
+      ['Futures', 'Stocks'],
+      ['Options', 'Stocks'],
+      ['Bonds', null],
+      ['Futures', 'Bonds'],
+      ['Swaps', 'Bonds'],
+      ['Options on Futures', 'Futures'],
+      ['Options on Swaps', 'Swaps'],
+    ]);
+    var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+    chart.draw(data, {allowHtml: true});
+  }
+</script>
