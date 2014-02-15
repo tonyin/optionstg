@@ -4,7 +4,7 @@ from main import app
 from flask.ext import wtf
 from flask import render_template, flash, redirect, url_for
 import auth
-from model import Lesson, Section
+from model import Lesson, Section, Piece
 
 # ######
 # Forms
@@ -26,10 +26,12 @@ def lesson(lesson_id, section_id):
     if user_db.progress < lesson_id:
         return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
     section_dbs = Section.query(Section.lesson == lesson_id).order(Section.number)
+    piece_dbs = Piece.query(Piece.lesson == lesson_id, Piece.section == section_id).order(Piece.number)
     return render_template(
         'lesson.html',
         html_class='lesson',
         sections=section_dbs,
+        pieces=piece_dbs,
         title='Lesson ' + str(lesson_id),
         lesson_id=lesson_id,
         section_id=section_id,

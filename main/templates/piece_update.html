@@ -10,7 +10,7 @@
       <div class="col-sm-8 col-md-8 col-lg-8">
         {{form.csrf_token}}
         
-        {{forms.text_field(form.tag, autofocus=True)}}
+        {{forms.select_field(form.tag, autofocus=True)}}
         {{forms.number_field(form.lesson)}}
         {{forms.number_field(form.section)}}
         {{forms.number_field(form.number)}}

@@ -11,9 +11,9 @@
   <ul class="nav nav-tabs">
   # for section in sections
     # if section.number == section_id
-      <li class="active"><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a></li>
+      <li class="active"><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">Section {{section.number}}</a></li>
     # else
-      <li><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">{{section.title}}</a></li>
+      <li><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number)}}">Section {{section.number}}</a></li>
     # endif
   # endfor
   </ul>
@@ -21,12 +21,19 @@
   # for section in sections
     # if section.number == section_id
       <div class="page-header">
-        <h1>{{section.title}}</h1>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-6">
-        <p></p>
+        <h4>{{section.title}}</h4>
       </div>
     # endif
   # endfor
+  
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    # for piece in pieces
+      <dl class="dl-horizontal">
+        <dt>{{piece.tag}}</dt>
+        <dd>{{piece.content}}</dd>
+      </dl>
+    # endfor
+  </div>
+  
 
 # endblock
