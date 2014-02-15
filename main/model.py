@@ -77,7 +77,7 @@ class User(Base, modelx.UserX):
 # #############
 # Custom models
 # #############
-TAGS = ['DEF', 'COR', 'EXP', 'MED']
+TAGS = ['DEF', 'COR', 'EXP']
 
 class Piece(Base):
     lesson = ndb.IntegerProperty()

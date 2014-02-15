@@ -14,12 +14,12 @@ from model import Piece
 # ######
 # Forms
 # ######
-TAGS = ['DEF', 'COR', 'EXP', 'MED']
+TAGS = ['DEF', 'COR', 'EXP']
 
 class PieceForm(wtf.Form):
     lesson = wtf.IntegerField('Lesson', [wtf.validators.NumberRange(min=0, max=5)])
     section = wtf.IntegerField('Section', [wtf.validators.NumberRange(min=1, max=9)])
-    tag = wtf.SelectField('Tag', choices=[(TAGS[0], 'Definition'), (TAGS[1], 'Corrollary'), (TAGS[2], 'Example'), (TAGS[3], 'Medium')])
+    tag = wtf.SelectField('Tag', choices=[(TAGS[0], 'Definition'), (TAGS[1], 'Corrollary'), (TAGS[2], 'Example')])
     number = wtf.IntegerField('Number', [wtf.validators.NumberRange(min=1, max=9)])
     content = wtf.TextAreaField('Content', [wtf.validators.optional()])
 

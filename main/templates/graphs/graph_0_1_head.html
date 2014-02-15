@@ -1,0 +1,25 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = new google.visualization.arrayToDataTable([
+      ['Price', 'Buyers', 'Sellers'],
+      ['6', 20, 0],
+      ['7', 16, 0],
+      ['8', 12, 0],
+      ['9', 10, 0],
+      ['10', 0, 6]
+      ['11', 0, 16]
+      ['12', 0, 24]
+    ]);
+    var options = {
+      title: 'Buyer and Seller Volumes',
+      hAxis: {title: 'Price', viewWindowMode: 'pretty', textPosition: 'in'},
+      vAxis: {viewWindowMode: 'pretty', textPosition: 'in'},
+      chartArea: {width:"100%", height:"100%"},
+    };
+    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>

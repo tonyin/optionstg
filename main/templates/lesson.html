@@ -1,9 +1,14 @@
 # extends 'base.html'
 
+# block head
+  # include graph_head if html_class == 'lesson'
+#endblock
+
 # block header
   <div class="jumbotron">
     <div class="container">
       <h1>{{title}}</h1>
+        <p>{{lesson.title if lesson.title else "Fundamentals"}}</p>
     </div>
   </div>
 # endblock
@@ -26,7 +31,7 @@
     # endif
   # endfor
   
-  <div class="col-sm-12 col-md-6 col-lg-6">
+  <div class="col-md-6 col-lg-6">
     # for piece in pieces
       <dl class="dl-horizontal">
         <dt>{{piece.tag}}</dt>
@@ -35,5 +40,8 @@
     # endfor
   </div>
   
+  <div class="col-md-6 col-lg-6">
+    # include graph
+  </div>
 
 # endblock
