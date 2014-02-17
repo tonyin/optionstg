@@ -1,7 +1,7 @@
 # extends 'base.html'
 
 # block head
-  # include graph_head if html_class == 'lesson'
+  # include graph_head if html_class == 'lesson' ignore missing
 #endblock
 
 # block header
@@ -38,11 +38,11 @@
           # endfor
         </div>
         <div class="col-md-6 col-lg-6">
-          # include graph
+          # include graph ignore missing
         </div>
       # else
         <div class="col-md-6 col-lg-6">
-          # include graph
+          # include graph ignore missing
         </div>
       # endif
     # endif

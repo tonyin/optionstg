@@ -2,9 +2,11 @@
 
 from main import app
 from flask.ext import wtf
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 import auth
 from model import Lesson, Section, Piece
+
+import answers
 
 # ######
 # Forms
@@ -18,17 +20,26 @@ class LessonForm(wtf.Form):
 # ########
 
 @app.route('/lesson/', defaults={'lesson_id': 0, 'section_id': 1}, methods=['GET'])
-@app.route('/lesson/<int:lesson_id>/', defaults={'lesson_id': 0, 'section_id': 1}, methods=['GET'])
-@app.route('/lesson/<int:lesson_id>/<int:section_id>/', methods=['GET'])
+@app.route('/lesson/<int:lesson_id>/', defaults={'section_id': 1}, methods=['GET'])
+@app.route('/lesson/<int:lesson_id>/<int:section_id>/', methods=['GET', 'POST'])
 @auth.login_required
 def lesson(lesson_id, section_id):
     user_db = auth.current_user_db()
     if user_db.progress < lesson_id:
         return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
     if not user_db.registered:
+        flash(u'Please register to access additional Lessons.')
         return redirect(url_for('welcome'))
-    #if form.validate_on_submit():
-        
+    if request.method == 'POST':
+        if answers.check(request.form, lesson_id):
+            user_db.progress = lesson_id + 1
+            try:
+                user_db.put()
+                flash(u'Congratulations! Welcome to Lesson %s.' % user_db.progress, 'success')
+                return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
+            except:
+                flash(u'Something went wrong.', 'info')
+                return redirect(url_for('lesson', lesson_id=lesson_id,section_id=section_id))
     lesson_db = Lesson.query(Lesson.number == lesson_id)
     section_dbs = Section.query(Section.lesson == lesson_id).order(Section.number)
     piece_dbs = Piece.query(Piece.lesson == lesson_id, Piece.section == section_id).order(Piece.number)
@@ -45,6 +56,7 @@ def lesson(lesson_id, section_id):
         section_id=section_id,
         progress=user_db.progress
     )
+
 
 # ################
 # Routing - Admin

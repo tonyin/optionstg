@@ -3,30 +3,35 @@
     <li class="active">
       <a href="{{url_for('lesson', lesson_id=progress)}}"><i class="fa fa-leaf"></i> Training</a>
     </li>
-    <li>
-      # if lesson_id > 0
+    # if lesson_id > 0
+      <li>
         <a href="{{url_for('lesson', lesson_id=lesson_id-1)}}"><i class="fa fa-arrow-left"></i> Prev</a>
-      # else
-        <p class="navbar-text"><i class="fa fa-arrow-left"></i> Prev</p>
-      # endif
-    </li>
+      </li>
+    # else
+      <li class="disabled">
+        <a href="#"><i class="fa fa-arrow-left"></i> Prev</a>
+      </li>
+    # endif
     <li class="active">
       <p class="navbar-text">Lesson {{lesson_id}}</p>
     </li>
-    <li>
-      # if (lesson_id < 5) and (lesson_id < progress)
+    
+    # if (lesson_id < 5) and (lesson_id < progress)
+      <li>
         <a href="{{url_for('lesson', lesson_id=lesson_id+1)}}">Next <i class="fa fa-arrow-right"></i></a>
-      # else
-        <p class="navbar-text">Next <i class="fa fa-arrow-right"></i></p>
-      # endif
-    </li>
+      </li>
+    # else
+      <li class="disabled">
+        <a href="#">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    # endif
   # else
     <li>
-      <a href="{{url_for('lesson', lesson_id=0)}}"><i class="fa fa-leaf"></i> Start Your Training</a>
+      <a href="{{url_for('lesson')}}"><i class="fa fa-leaf"></i> Start Your Training</a>
     </li>
   # endif
 # else
   <li class="disabled">
-    <a href="#"> Start Your Training</a>
+    <a href="{{url_for('lesson', lesson_id=0)}}"> Start Your Training</a>
   </li>
 # endif
