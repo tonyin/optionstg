@@ -7,7 +7,7 @@
 # block header
   <div class="jumbotron">
     <div class="container">
-      <h1>{{title}}</h1>
+      <h1>Lesson {{lesson_id}}</h1>
         <p>{{lesson.title if lesson.title else "Fundamentals"}}</p>
     </div>
   </div>
@@ -28,20 +28,24 @@
       <div class="page-header">
         <h4>{{section.title}}</h4>
       </div>
+      # if section.number != 9
+        <div class="col-md-6 col-lg-6">
+          # for piece in pieces
+            <dl class="dl-horizontal">
+              <dt>{{piece.tag}}</dt>
+              <dd>{{piece.content}}</dd>
+            </dl>
+          # endfor
+        </div>
+        <div class="col-md-6 col-lg-6">
+          # include graph
+        </div>
+      # else
+        <div class="col-md-6 col-lg-6">
+          # include graph
+        </div>
+      # endif
     # endif
-  # endfor
-  
-  <div class="col-md-6 col-lg-6">
-    # for piece in pieces
-      <dl class="dl-horizontal">
-        <dt>{{piece.tag}}</dt>
-        <dd>{{piece.content}}</dd>
-      </dl>
-    # endfor
-  </div>
-  
-  <div class="col-md-6 col-lg-6">
-    # include graph
-  </div>
+  # endfor  
 
 # endblock

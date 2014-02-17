@@ -72,8 +72,9 @@
       <thead>
         <tr class="text-nowrap">
           <th class="col-xs-4"><input id="select-all" type="checkbox"> {{utils.order_by_link('name', 'Name')}}</th>
-          <th class="col-xs-2">{{utils.order_by_link('progress', 'Progress')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('username', 'Username')}}</th>
+          <th class="col-xs-2">{{utils.order_by_link('registered', 'Registered')}}</th>
+          <th class="col-xs-2">{{utils.order_by_link('progress', 'Progress')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('email', 'Email')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('created', 'Created')}}</th>
           <th class="col-xs-2">{{utils.order_by_link('modified', 'Modified')}}</th>
@@ -99,8 +100,9 @@
                 <i class="fa fa-ban" title="Inactive"></i>
               # endif
             </td>
-            <td>{{user_db.progress}}</td>
             <td>{{user_db.username}}</td>
+            <td>{{user_db.registered}}</td>
+            <td>{{user_db.progress}}</td>
             <td>{{user_db.email}}</td>
             <td>
               <time datetime="{{user_db.created.__str__()[:-3]}}">

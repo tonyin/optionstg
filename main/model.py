@@ -63,6 +63,7 @@ class User(Base, modelx.UserX):
   
   # Custom
   progress = ndb.IntegerProperty(default=0)
+  registered = ndb.BooleanProperty(default=False)
 
   _PROPERTIES = Base._PROPERTIES.union({
       'active',

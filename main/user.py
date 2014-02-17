@@ -62,7 +62,7 @@ class UserUpdateForm(wtf.Form):
   
   # Custom
   progress = wtf.IntegerField('Progress', [wtf.validators.NumberRange(min=0, max=5)])
-
+  registered = wtf.BooleanField('Registered')
 
 @app.route('/user/<int:user_id>/update/', methods=['GET', 'POST'])
 @auth.admin_required

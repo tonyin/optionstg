@@ -25,6 +25,10 @@ def lesson(lesson_id, section_id):
     user_db = auth.current_user_db()
     if user_db.progress < lesson_id:
         return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
+    if not user_db.registered:
+        return redirect(url_for('welcome'))
+    #if form.validate_on_submit():
+        
     lesson_db = Lesson.query(Lesson.number == lesson_id)
     section_dbs = Section.query(Section.lesson == lesson_id).order(Section.number)
     piece_dbs = Piece.query(Piece.lesson == lesson_id, Piece.section == section_id).order(Piece.number)
@@ -37,10 +41,9 @@ def lesson(lesson_id, section_id):
         pieces=piece_dbs,
         graph=graph_string + '.html',
         graph_head=graph_string + '_head.html',
-        title='Lesson ' + str(lesson_id),
         lesson_id=lesson_id,
         section_id=section_id,
-        progress=user_db.progress,
+        progress=user_db.progress
     )
 
 # ################

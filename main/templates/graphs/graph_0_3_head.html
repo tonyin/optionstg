@@ -3,18 +3,26 @@
   google.load('visualization', '1.0', {'packages':['orgchart']});
   google.setOnLoadCallback(drawChart);
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Security', 'Underlying'],
-      ['Stocks', null],
-      ['Futures', 'Stocks'],
-      ['Options', 'Stocks'],
-      ['Bonds', null],
-      ['Futures', 'Bonds'],
-      ['Swaps', 'Bonds'],
-      ['Options on Futures', 'Futures'],
-      ['Options on Swaps', 'Swaps'],
-    ]);
-    var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-    chart.draw(data, {allowHtml: true});
-  }
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('string', 'Parent');
+        data.addColumn('string', 'ToolTip');
+        data.addRows([
+          ['Security', '', 'Tradable asset of any kind'],
+		  
+          ['Equity', 'Security', ''],
+		  ['Debt', 'Security', 'An obligation owed by one party (debtor) to a second party (creditor)'],
+		  ['Derivatives', 'Security', 'A financial contract which derives its value from another entity known as the underlying'],
+          
+		  ['Common Stocks', 'Equity', ''],
+          
+		  ['Bonds', 'Debt', 'An instrument of indebtedness of the bond issuer to the holders'],
+		  ['Debentures', 'Debt', 'A medium-to-long-term debt instrument used by large companies to borrow money'],
+		  
+		  ['Futures', 'Derivatives', 'a standardized contract between two parties to buy or sell an asset for a price agreed upon today and delivery and payment occuring on a specified future date'],
+		  ['Options', 'Derivatives', 'A contract that gives the buyer the right, but not obligation, to buy or sell the underlying asset at a specified price on or before a specified date'],
+        ]);
+        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
+        chart.draw(data, {allowHtml:true});
+      }
 </script>

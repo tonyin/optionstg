@@ -21,10 +21,11 @@
         {{forms.text_field(form.name, autofocus=True)}}
         {{forms.text_field(form.username, autocomplete='off')}}
         {{forms.email_field(form.email)}}
-        # if current_user.id != user_db.key.id()
+        ## if current_user.id != user_db.key.id()
           {{forms.checkbox_field(form.admin)}}
           {{forms.checkbox_field(form.active)}}
-        # endif
+          {{forms.checkbox_field(form.registered)}}
+        ## endif
         {{forms.number_field(form.progress)}}
       </div>
       <div class="col-md-2 col-sm-6">
