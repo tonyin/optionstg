@@ -27,7 +27,7 @@ def lesson(lesson_id, section_id):
     user_db = auth.current_user_db()
     if user_db.progress < lesson_id:
         return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
-    if not user_db.registered:
+    if lesson_id > 0 and not user_db.registered:
         flash(u'Please register to access additional Lessons.')
         return redirect(url_for('welcome'))
     if request.method == 'POST':
