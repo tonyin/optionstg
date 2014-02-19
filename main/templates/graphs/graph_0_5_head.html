@@ -1,0 +1,51 @@
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(function() {
+
+  // hide the summary from view
+  $("#summary").hide();
+  $("#story").hide();
+
+  // ---- event handler ---- //
+  $("#btn-click").click(function(e) {
+
+    // grab the values from the input boxes, then append them to the DOM
+    $(".bidprice").empty().append($("input.bidprice").val());
+    $(".bidsize").empty().append($("input.bidsize").val());
+    $(".offerprice").empty().append($("input.offerprice").val());
+    $(".offersize").empty().append($("input.offersize").val());
+	
+	//just need to make sure the prices make sense
+	if ($(".bidprice").val() == "" || $(".bidsize").val() == "" || $(".offerprice").val() == "" || $(".offersize").val() == ""){
+		window.alert("Please enter all values")
+	}
+	else if (!isFinite($(".bidprice").val()) || !isFinite($(".bidsize").val()) || !isFinite($(".offerprice").val()) || !isFinite($(".offersize").val())){
+		window.alert("Please enter valid values")
+	
+	}
+	else if ($(".bidprice").val() > $(".offerprice").val()){
+		window.alert("Your bid price is higher than your offer- buy high sell low doesn't sound like a profitable strategy. Try again!")
+	}
+	else if ($(".bidprice").val() == $(".offerprice").val()){
+		window.alert("If you are willing to buy and sell at the same price, you won't be making any profit!")
+	}
+	else {
+		// show the summary
+		$("#summary").show();
+
+		// empty the form's values
+		$(':input').val('');
+
+		// hide the questions
+		$("#questions").hide();
+	}
+	  });
+
+  // ---- event handler ---- //
+  $("#play-btn").click(function(e) {
+    $("#questions").show();   
+    $("#summary").hide();
+  });
+
+});
+</script>

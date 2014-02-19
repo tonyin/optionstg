@@ -1,2 +1,35 @@
-<div id="chart_div"></div>
-<p class="text-center"><em></em></p>
+<div id="questions">
+  <h4>Market Making Game</h4>
+  <p>Let's see if you've got what it takes. You are now the designated market-maker in dollar-denominated Euros.</p>
+
+  <form role="form">
+
+    <div class="form-group">
+      <label for="bidprice">What price would you pay for 1 Euro?</label>
+      <input type="text" class="form-control bidprice" id="bidprice" placeholder="Enter bid price">
+    </div>
+    <div class="form-group">
+      <label for="bidsize">How many Euros would you be willing to buy at that level?</label>
+      <input type="text" class="form-control bidsize" id="bidsize" placeholder="Enter bid size">
+    </div>
+    <div class="form-group">
+      <label for="offerprice">At what price would you sell 1 Euro?</label>
+      <input type="text" class="form-control offerprice" id="offerprice" placeholder="Enter offer price">
+    </div>
+    <div class="form-group">
+      <label for="offersize">How many Euros would you be willing to sell at that level?</label>
+      <input type="text" class="form-control offersize" id="offersize" placeholder="Enter offer size">
+    </div>
+  
+  </form>
+  
+  <button type="submit" class="btn btn-default" id="btn-click">Submit</button>
+</div>
+
+<div id="summary">
+  <h4>Can you make me a market on dollar-denominated Euros?</h4>
+  <p>Your market: "I'm <span class="bidprice"></span> bid for <span class="bidsize"></span> and I have <span class="offersize"></span> at <span class="offerprice"></span>."</p>
+  <p>Here you are saying you would be willing to pay <span class="bidprice"></span> USD for 1 Euro up to <span class="bidsize"></span> times, and willing to receive <span class="offerprice"></span> USD in exchange for 1 Euro up to <span class="offersize"></span> times. You are providing prices you are willing to buy and sell, providing liquidity to the marketplace. Good job!</p>
+  <br />
+  <button type="submit" class="btn bt-default" id="play-btn">Reset</button>
+</div>
