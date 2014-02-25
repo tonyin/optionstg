@@ -5,12 +5,12 @@
 #endblock
 
 # block header
-  <div class="jumbotron">
+  <!--<div class="jumbotron">
     <div class="container">
       <h1>Lesson {{lesson_id}}</h1>
         <p>{{lesson.title if lesson.title else "Fundamentals"}}</p>
     </div>
-  </div>
+  </div>-->
 # endblock
 # block content
   <ul class="nav nav-tabs">
@@ -39,6 +39,19 @@
         </div>
         <div class="col-md-6 col-lg-6">
           # include graph ignore missing
+          <br /><br />
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{section.number}}" aria-valuemin="0" aria-valuemax="{{lesson.sections}}" style="width: {{section.number*100//lesson.sections}}%;">
+              {{section.number*100//lesson.sections}}% Complete
+            </div>
+          </div>
+          <ul class="pager">
+            # if section.number != lesson.sections
+              <li class="next"><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=section.number+1)}}">Next Section &rarr;</a></li>
+            # else
+              <li class="next"><a href="{{url_for('lesson', lesson_id=lesson_id, section_id=9)}}">Next Section &rarr;</a></li>
+            # endif
+          </ul>
         </div>
       # else
         <div class="col-md-6 col-lg-6">
@@ -46,6 +59,6 @@
         </div>
       # endif
     # endif
-  # endfor  
+  # endfor
 
 # endblock

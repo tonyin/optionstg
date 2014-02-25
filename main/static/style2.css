@@ -45,3 +45,6 @@ footer {
   border-radius: 4px 4px 0 0;
   color: #DC3522;
 }
+.pager li > a {
+  color: #DC3522;
+}

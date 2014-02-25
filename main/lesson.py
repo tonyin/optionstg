@@ -14,6 +14,8 @@ import answers
 class LessonForm(wtf.Form):
     title = wtf.StringField('Title', [wtf.validators.required()])
     number = wtf.IntegerField('Number', [wtf.validators.optional(), wtf.validators.NumberRange(min=0, max=5)])
+    sections = wtf.IntegerField('Sections', [wtf.validators.optional(), wtf.validators.NumberRange(min=0, max=9)])
+    pieces = wtf.IntegerField('Pieces', [wtf.validators.optional(), wtf.validators.NumberRange(min=0, max=9)])
 
 # ########
 # Routing
@@ -28,7 +30,7 @@ def lesson(lesson_id, section_id):
     if user_db.progress < lesson_id:
         return redirect(url_for('lesson', lesson_id=user_db.progress, section_id=1))
     if lesson_id > 0 and not user_db.registered:
-        flash(u'Please register to access additional Lessons.')
+        flash(u'Please register with your email below to access additional Lessons.')
         return redirect(url_for('welcome'))
     if request.method == 'POST':
         if answers.check(request.form, lesson_id):
@@ -40,7 +42,7 @@ def lesson(lesson_id, section_id):
             except:
                 flash(u'Something went wrong.', 'info')
                 return redirect(url_for('lesson', lesson_id=lesson_id,section_id=section_id))
-    lesson_db = Lesson.query(Lesson.number == lesson_id)
+    lesson_db = Lesson.query(Lesson.number == lesson_id).get()
     section_dbs = Section.query(Section.lesson == lesson_id).order(Section.number)
     piece_dbs = Piece.query(Piece.lesson == lesson_id, Piece.section == section_id).order(Piece.number)
     graph_string = 'graphs/graph_' + str(lesson_id) + '_' + str(section_id)

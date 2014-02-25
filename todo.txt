@@ -1,1 +1,6 @@
 "start your training" link to current progress from non-lesson pages
+track number of tries
+profile
+forums
+
+refill answers when question is incorrect

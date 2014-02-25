@@ -14,5 +14,6 @@ def check(answers, lesson):
             if answers[i] != lesson_0[int(i)]:
                 flash(u'Question ' + i + ' is incorrect.', 'error')
                 return False
+    flash(u'You got all the querstions correct!')
     
     return True
