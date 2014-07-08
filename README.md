@@ -5,9 +5,9 @@ Options Training Ground (OTG) is an online education course on trading option de
 
 Featuring
 --------
-- Free [Lesson 0][http://options-tg.appspot.com/lesson/] content
-- [Interactive][http://options-tg.appspot.com/lesson/0/5/] activities
-- [Exercises][http://options-tg.appspot.com/lesson/0/9/] at the end of each lesson
+- Free [Lesson 0](http://options-tg.appspot.com/lesson/) content
+- [Interactive](http://options-tg.appspot.com/lesson/0/5/) activities
+- [Exercises](http://options-tg.appspot.com/lesson/0/9/) at the end of each lesson
 
 Upcoming
 --------
@@ -17,4 +17,4 @@ Upcoming
 
 Thanks To
 ---------
-- Cloned from [gae-init][]
+- Cloned from [gae-init](https://github.com/gae-init/gae-init)
