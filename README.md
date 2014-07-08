@@ -1,7 +1,7 @@
 Options Training Ground
 =======================
 
-Options Training Ground (OTG) is an online education course on trading option derivative securities.
+[Options Training Ground](http://options-tg.appspot.com/) (OTG) is an online education course on trading option derivative securities.
 
 Featuring
 --------
